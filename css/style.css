@@ -1,0 +1,385 @@
+/* --- Глобальні стилі --- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+    box-sizing: border-box;
+}
+
+.footer__social-icon {
+    display: inline-flex;       /* Вирівнювання */
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin: 0 9px 9px 0;
+    width: 24px;
+    height: 24px;
+    border: 0;
+    text-decoration: none;
+    
+    /* Колір: сірий напівпрозорий */
+    color: rgba(60, 60, 60, 0.5) !important; 
+    transition: all 0.3s ease;
+}
+
+/* Ефект при наведенні (стає чорною) */
+.footer__social-icon:hover {
+    color: #000000 !important;
+    transform: scale(1.1);
+}
+
+/* Налаштування самого SVG всередині посилання */
+.footer__social-icon svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor; /* Іконка фарбується в колір тексту */
+    display: block;
+}
+
+/* Уніфікація box-sizing для всіх елементів */
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/* --- Header --- */
+header {
+    background-color: white;
+    padding: 20px 40px; /* Трохи зменшив бічні відступи для мобільності, можна повернути 110px */
+    height: auto; /* Висота підлаштовується під контент, або залиште 100px якщо потрібно фіксовано */
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Додано легку тінь для акценту */
+}
+
+.cont_header {
+    display: flex;
+    justify-content: space-between; /* Розносить логотип з текстом та меню по краях */
+    align-items: center;
+    width: 100%;
+    max-width: 1400px; /* Обмеження ширини контенту */
+}
+
+/* Нова обгортка для логотипу та тексту */
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Відстань між лого та текстом */
+    flex-shrink: 0; /* Заборона стискання */
+}
+
+.logo {
+    width: 200px; /* Фіксований розмір логотипу */
+    height:auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* Блок з текстом - тепер він не розтягується */
+.header__section {
+    display: block;
+    max-width: 320px; /* КЛЮЧОВЕ: обмежує ширину, створюючи ефект "квадратика" */
+    text-align: left;
+}
+
+.header__slogan {
+    font-weight: 400;
+    font-size: 13px; /* Оптимальний розмір для довгих назв */
+    line-height: 1.4; /* Збільшено міжрядковий інтервал для читабельності */
+    text-transform: none;
+    color: #000;
+    margin: 0;
+    letter-spacing: 0.3px;
+}
+
+/* Меню */
+.menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    list-style: none;
+    gap: 40px;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-elements {
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px; /* Трохи зменшив для балансу */
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: #000;
+    transition: color 0.3s ease;
+}
+
+.menu-elements:hover {
+    color: #645fd3; /* Колір при наведенні (опціонально) */
+}
+
+/* --- Main Content --- */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.hero-section {
+    border-radius: 32px;
+    padding: 60px 40px;
+    max-width: 100%;
+    min-height: 550px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #f4f4f4; /* Додано фон для видимості секції */
+    margin-bottom: 40px;
+}
+
+.cta-title {
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 1.45;
+    color: #000;
+    max-width: 600px;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    border: 1px solid #000;
+    border-radius: 200px;
+    width: fit-content; /* Кнопка по ширині контенту, або залиште 305px */
+    min-width: 305px;
+    height: 50px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.2;
+    text-align: center;
+    color: #000;
+    background: #d3e9ff;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.cta-button:hover {
+    background: #b3d9ff;
+}
+
+/* --- Products --- */
+.products-title {
+    font-weight: 600;
+    font-size: 42px;
+    line-height: 1.25;
+    text-align: center;
+    color: #000;
+    margin-bottom: 40px;
+}
+
+.products-cards {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center; /* Центруємо картки */
+    gap: 20px;
+}
+
+.card {
+    border: 1px solid #000;
+    border-radius: 32px;
+    padding: 20px;
+    width: 280px;
+    box-sizing: border-box;
+    background: #fff;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.title-card {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1.25;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+.price-card {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.08;
+    color: #645fd3;
+}
+
+/* --- Contact Section --- */
+.contact-section {
+    background: #d3e9ff;
+    border-radius: 16px;
+    padding: 60px 20px;
+    max-width: 1200px;
+    text-align: center;
+    margin: 60px auto;
+}
+
+.contact-text {
+    font-weight: 500;
+    font-size: 36px; /* Трохи зменшив для кращого фіту */
+    line-height: 1.25;
+    color: #000;
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+    display: block;
+}
+
+.contact-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+    height: 50px;
+    margin: 0 auto;
+}
+
+.input-phone {
+    border: 1px solid #000;
+    border-radius: 54px 0 0 54px;
+    padding: 0 20px;
+    width: 100%; /* Розтягується всередині форми */
+    height: 100%;
+    background: #d3e9ff;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    outline: none;
+}
+
+.submit-button {
+    border: 1px solid #000;
+    border-left: none;
+    border-radius: 0 200px 200px 0;
+    width: 120px;
+    height: 100%;
+    background: #000;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.2;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.submit-button:hover {
+    background: #333;
+}
+
+/* --- Footer --- */
+footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 60px 40px;
+    min-height: 200px;
+    background: #F8F9FA;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 40px;
+}
+
+.footer-menu {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 60px;
+}
+
+.vert-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    gap: 15px;
+    list-style: none;
+}
+
+.footer-elements-first {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1.3;
+    margin: 0 0 10px 0;
+    color: #000;
+    display: block;
+}
+
+.footer-elements {
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.3;
+    color: #000;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-elements:hover {
+    color: #645fd3;
+}
+
+/* Адаптивність для мобільних */
+@media (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+        height: auto;
+    }
+
+    .cont_header {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .logo-wrapper {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .header__section {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .menu {
+        width: 100%;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .cta-title {
+        font-size: 32px;
+    }
+    
+    .contact-text {
+        font-size: 24px;
+    }
+    
+    footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .footer-menu {
+        justify-content: center;
+    }
+}   
