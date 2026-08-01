@@ -12,14 +12,13 @@
 
         <header>
             <div class="cont_header">
-                <!-- Обгортка для логотипу та тексту -->
+
                 <div class="logo-wrapper">
-                    <img class='logo' src='/css/img/19030830949472.webp' alt="Логотип ББС">
+                    <img class='logo' src='/css/img/3АК_логотип.webp' alt="Логотип">
                     <div class="header__section">
-                        <div class="header__slogan">
-                            офіційний магазин Батальону Безпілотних Систем Третьої Штурмової Бригади Третього Армійського Корпусу
-                        </div>
+                        <div class="header__slogan">офіційний магазин Батальону Безпілотних Систем Третьої Штурмової Бригади Третього Армійського Корпусу</div>
                     </div>
+                    <img class='logo_2' src='/css/img/bbs-96730741306747.webp' alt="Логотип ББС">
                 </div>
 
                 <ul class='menu'>
@@ -27,14 +26,16 @@
                     <li><a class='menu-elements' href='#'>Товари ББС</a></li>
                     <li><a class='menu-elements' href='#'>AB3.ARMY</a></li>
                 </ul>
+
+                <!-- Сюди вставляємо контейнер кошика Ecwid -->
+                <div data-layout="SMALL_ICON_COUNTER" class="ec-cart-widget"></div>
             </div>
         </header>
+
         
         <main>
             <div class="hero-section">
-                <h1 class="cta-title_">_</h1>
-                <h1 class="cta-title_">_</h1>
-                <h1 class="cta-title">Спорядження для кожного.</h1>
+                <h1 class="cta-title">Для всіх, хто двіжує на полі бою, за пультом, чи у штабі.</h1>
                 <button href="#" class="cta-button">Переглянути каталог</button>
             </div>
              
@@ -74,10 +75,7 @@
         <footer>
             <div class="footer-menu">
                 <div class="copyright">
-                    © 2005-2026            
-                    <a class="text_copyright" href="#top">Інтернет-магазин мілітарист</a>
-                    <br>
-                    <a class="text_copyright" href="#">Карта сайту</a>
+                    <img class='logo' src='/css/img/3АК_логотип_2.webp' alt="Логотип Корпусу">
                 </div>
                 
                 <div class="vert-menu">
@@ -94,17 +92,36 @@
                         </svg>
                     </a>
 
-                    <a href="https://instagram.com/ab3.store.merch" class="footer-elements">Instagram</a>
-                    <a href="https://telegram.me/@ab3_store" class="footer-elements">Telegram</a>
+                    <a class="footer__social-icon" rel="nofollow" target="_blank" title="Telegram" aria-label="Telegram" href="https://telegram.me/@ab3_store">
+                        <svg class="icon-tg">
+                            <use xlink:href="#icon-tg"></use>
+                        </svg>
+                    </a>
+
                 </div>
             </div>
         </footer>
 
     <svg style="display: none;">
+
         <symbol id="icon-ig" viewBox="0 0 24 24">
             <path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z" />
         </symbol>
-    </svg>   
+        
+        <symbol id="icon-tg" viewBox="0 0 24 24">
+            <path d="M11.944,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11.944,4C16.022,4 19.111,5.367 20.5,6.167C21.133,6.533 21.333,6.9 21.333,7.333C21.333,7.8 20.967,8.067 20.533,8.333C19.4,9.033 17.8,10.067 17.067,10.533C16.8,10.7 16.533,11.067 16.8,11.333C17.4,11.933 18.6,13.133 19.2,13.733C19.8,14.333 20.4,14.933 20.8,15.333C21.2,15.733 21.4,16.2 21.267,16.8C21.133,17.4 20.6,17.867 19.933,18C17.8,18.467 15.2,18.8 12.533,18.8C9.333,18.8 6.8,18.267 5.2,17.6C3.867,17.067 3.2,16.467 3.333,15.733C3.4,15.333 3.933,14.933 4.933,14.467C6.467,13.733 8.8,12.6 11.067,11.267C11.333,11.133 11.6,10.933 11.333,10.667C11.067,10.4 10.6,10.533 10.267,10.733C8.4,11.867 5.8,13.467 4.933,14C4.2,14.467 3.6,14.8 3.2,14.8C2.6,14.8 2.2,14.333 2.267,13.6C2.4,12.4 3.4,10.8 5.6,9.2C7.8,7.6 10.6,6.4 11.944,4Z" />
+        </symbol>
+
+    </svg>
+
+    <!-- Контейнер для віджету кошика (саме він генерує ваш HTML код) -->
+    <div data-layout="SMALL_ICON_COUNTER" class="ec-cart-widget"></div>
+
+    <!-- Скрипт ініціалізації Ecwid -->
+    <div>
+        <script data-cfasync="false" type="text/javascript" src="https://app.ecwid.com/script.js?ВАШ_STORE_ID&data_platform=code" charset="utf-8"></script>
+        <script>Ecwid.init();</script>
+    </div>   
         
     </body>
 </html>
