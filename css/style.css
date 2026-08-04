@@ -275,8 +275,7 @@ main {
 }
 
 .card {
-    border: 1px solid #000;
-    border-radius: 32px;
+    border: 1.5px solid #000;
     padding: 20px;
     width: 280px;
     background: #fff;
