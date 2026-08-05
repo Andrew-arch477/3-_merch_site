@@ -387,14 +387,22 @@ main {
    6. FOOTER (ПІДВАЛ)
    ========================================= */
 footer {
+    display: block;
+    width: 100%;
+    padding: 60px 40px;
+    background: #F8F9FA;
+    box-sizing: border-box;
+}
+
+/* Контейнер всередині футера (аналог .cont_header) */
+.cont_footer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 60px 40px;
-    background: #F8F9FA;
+    width: 100%;
     max-width: 1400px;
-    margin: 0 auto;
+    margin: 0 auto; /* Центрування контейнера */
     gap: 40px;
 }
 
