@@ -5,13 +5,63 @@ let cart = [];
 const productsGrid = document.querySelector('.products-cards');
 const cartBtn = document.getElementById('cart-btn');
 const cartCount = document.getElementById('cart-count');
-const cartModal = document.getElementById('cart-modal');
-const closeModalBtn = document.getElementById('close-modal-btn');
-const cartItemsContainer = document.getElementById('cart-items');
-const totalPriceEl = document.getElementById('total-price');
-const checkoutBtn = document.getElementById('checkout-btn');
-const clearCartBtn = document.getElementById('clear-cart-btn');
-const checkoutForm = document.getElementById('checkout-form');
+let cartModal = document.getElementById('cart-modal');
+let closeModalBtn = document.getElementById('close-modal-btn');
+let cartItemsContainer = document.getElementById('cart-items');
+let totalPriceEl = document.getElementById('total-price');
+let checkoutBtn = document.getElementById('checkout-btn');
+let clearCartBtn = document.getElementById('clear-cart-btn');
+let checkoutForm = document.getElementById('checkout-form');
+
+// створюємо  HTML кошика.
+function createCart() {
+  if (cartModal) return;
+
+  document.body.insertAdjacentHTML('beforeend', `
+    <div id="cart-modal" class="cart-modal hidden">
+      <div class="cart-window">
+        <button id="close-modal-btn" class="close-cart" type="button">×</button>
+        <h2>Кошик</h2>
+        <div id="cart-items"></div>
+        <p class="cart-total">Разом: <strong id="total-price">0 грн</strong></p>
+        <div class="cart-actions">
+          <button id="clear-cart-btn" class="cart-secondary" type="button">Очистити</button>
+          <button id="checkout-btn" class="cart-primary" type="button">Оформити замовлення</button>
+        </div>
+        <form id="checkout-form" class="checkout-form hidden">
+          <input id="user-name" type="text" placeholder="Ваше ім'я" required>
+          <input id="user-phone" type="tel" placeholder="Номер телефону" required>
+          <input id="user-city" type="text" placeholder="Місто доставки" required>
+          <button class="cart-primary" type="submit">Підтвердити замовлення</button>
+        </form>
+      </div>
+    </div>
+  `);
+
+  cartModal = document.getElementById('cart-modal');
+  closeModalBtn = document.getElementById('close-modal-btn');
+  cartItemsContainer = document.getElementById('cart-items');
+  totalPriceEl = document.getElementById('total-price');
+  checkoutBtn = document.getElementById('checkout-btn');
+  clearCartBtn = document.getElementById('clear-cart-btn');
+  checkoutForm = document.getElementById('checkout-form');
+
+  closeModalBtn.addEventListener('click', closeCart);
+  if (cartBtn) {
+    cartBtn.addEventListener('click', () => cartModal.classList.remove('hidden'));
+  }
+  cartModal.addEventListener('click', event => {
+    if (event.target === cartModal) closeCart();
+  });
+  clearCartBtn.addEventListener('click', clearCart);
+  checkoutBtn.addEventListener('click', () => checkoutForm.classList.toggle('hidden'));
+  checkoutForm.addEventListener('submit', submitOrder);
+}
+
+function closeCart() {
+  if (cartModal) cartModal.classList.add('hidden');
+  if (checkoutForm) checkoutForm.classList.add('hidden');
+}
 
 // БЕЗПЕЧНЕ СТВОРЕННЯ КОНТЕЙНЕРА ДЛЯ ТОСТІВ
 let toastContainer = document.getElementById('toast-container');
@@ -97,7 +147,7 @@ function createProductCard(product) {
       <img class="img-card" src="${product.image}" alt="${product.name}" loading="lazy">
       <h3 class="title-card">${product.name}</h3>
       <p class="price-card">${product.price} грн</p>
-      <button class="btn-add" style="margin-top: 10px; cursor: pointer;" onclick="addToCart(${product.id})">
+      <button class="btn-add" onclick="addToCart(${product.id})">
         + В кошик
       </button>
     </div>
@@ -162,13 +212,13 @@ function saveCart() {
 }
 
 function updateCartUI() {
-  if (!cartCount || !totalPriceEl || !cartItemsContainer) return;
-
   const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-  cartCount.textContent = totalCount;
+  if (cartCount) cartCount.textContent = totalCount;
 
   const totalSum = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-  totalPriceEl.textContent = `${totalSum} грн`;
+  if (totalPriceEl) totalPriceEl.textContent = `${totalSum} грн`;
+
+  if (!cartItemsContainer) return;
 
   if (cart.length === 0) {
     cartItemsContainer.innerHTML = '<p class="empty-cart-msg">Ваш кошик порожній.</p>';
@@ -225,8 +275,7 @@ if (checkoutBtn && checkoutForm) {
   });
 }
 
-if (checkoutForm) {
-  checkoutForm.addEventListener('submit', (e) => {
+function submitOrder(e) {
     e.preventDefault();
 
     const name = document.getElementById('user-name').value;
@@ -242,7 +291,10 @@ if (checkoutForm) {
     checkoutForm.classList.add('hidden');
     if (cartModal) cartModal.classList.add('hidden');
     showToast('Замовлення успішно оформлено.');
-  });
+}
+
+if (checkoutForm) {
+  checkoutForm.addEventListener('submit', submitOrder);
 }
 
 // ========== ДОПОМІЖНІ СПЛИВАЮЧІ ПОВІДОМЛЕННЯ (TOAST) ==========
@@ -264,6 +316,7 @@ function showToast(message) {
 
 // ========== СТАРТ ПРИ ЗАВАНТАЖЕННІ СТОРІНКИ ==========
 document.addEventListener('DOMContentLoaded', () => {
+    createCart();
     const images = document.querySelectorAll('.carousel-image');
     if (images.length > 0) {
         let currentIndex = 0;
